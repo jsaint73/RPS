@@ -20,16 +20,18 @@ function playerChoice(){
         input = prompt("Please enter a valid choice: rock, paper, or scissors:");
     }
     input = input.toLowerCase();
-    let check = valaidateInput(input)
-    if (check == true){
-        console.log("You chose: " + input);
-    } else {
-        // If the input is invalid, prompt again
-        return playerChoice();
+    let check = valaidateInput(input);
+    while (check == false){
+        input = prompt("Wrong Word Dipshit: rock, paper, or scissors:");
+        while(input == null){
+        input = prompt("Please enter a valid choice: rock, paper, or scissors:");
+        }
+        input = input.toLowerCase();
+        check = valaidateInput(input);
+
     }
 
-
-    console.log(input);
+    return(input);
     }
 
 function computerChoice(){
@@ -39,12 +41,6 @@ function computerChoice(){
 
 
 function valaidateInput(input){
-    if(choices.includes(input)){
-        return true;
-    }
-    else{
-        console.log("Invalid choice. Please try again.");
-        return false;
-    }
+    return(choices.includes(input));
 }
 game();
